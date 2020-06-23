@@ -8,11 +8,19 @@ class App extends Component{
   }
 
   handleSubmit = (formState) => {
-    let newTimers = [...this.state.timers, formState];
+    let newTimers = [...this.state.timers, {formState, started: false, timePassed: 0}];
     this.setState({
       timers: newTimers
     })
     console.log(this.state);
+  }
+
+  deleteTimer = (timer) => {
+    let timerHold = this.state.timer
+    let updateTimers = timerHold.filter(ti => ti != timer)
+    this.setState({
+      timers: updateTimers
+    })
   }
 
   render(){
